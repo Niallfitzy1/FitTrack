@@ -31,8 +31,8 @@ class DiaryEntryWithWorkouts {
 }
 
 class ImportRow {
-  ImportRow(
-      this.day, this.exerciseName, this.targetArea, this.weight, this.reps);
+  ImportRow(this.day, this.exerciseName, this.targetArea, this.weight,
+      this.reps);
 
   final DateTime day;
   final String exerciseName;
