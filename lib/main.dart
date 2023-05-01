@@ -26,9 +26,10 @@ class FitTrackApp extends StatelessWidget {
       title: 'FitTrack',
       theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
       darkTheme: ThemeData(
-          useMaterial3: true,
-          colorScheme: darkColorScheme,
-         ),
+        useMaterial3: true,
+        colorScheme: darkColorScheme,
+      ),
+      debugShowCheckedModeBanner: false,
       initialRoute: RouteName.today.path,
       onGenerateRoute: AppRouter.generateRoute,
       localizationsDelegates: const [

@@ -82,6 +82,8 @@ class AppRouter {
         break;
       case RouteName.import:
         appBarTitle = 'Import & Export';
+        showNav = false;
+        showFab = false;
         builder = (BuildContext context) => const ImportExportPage();
         break;
       case RouteName.today:
