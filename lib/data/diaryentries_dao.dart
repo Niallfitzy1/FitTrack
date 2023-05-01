@@ -21,6 +21,14 @@ class DiaryEntriesDao extends DatabaseAccessor<AppDatabase>
             ]))
           .watch();
 
+  Future<List<DiaryEntry>> allDiaryEntriesFuture({order = OrderingTerm.desc}) =>
+      (select(diaryEntries)
+            ..orderBy([
+              (it) => order(it.createdAt),
+              (it) => OrderingTerm.desc(it.id)
+            ]))
+          .get();
+
   Future<DiaryEntry> addEntry(DateTime day) => into(diaryEntries)
       .insertReturning(DiaryEntriesCompanion.insert(createdAt: day),
           mode: InsertMode.insertOrIgnore,

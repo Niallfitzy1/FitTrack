@@ -3,7 +3,7 @@ import 'package:fittrack/screens/add_exercise.dart';
 import 'package:fittrack/screens/add_workout.dart';
 import 'package:fittrack/screens/all_exercises.dart';
 import 'package:fittrack/screens/calendar.dart';
-import 'package:fittrack/screens/import_page.dart';
+import 'package:fittrack/screens/data_import_export.dart';
 import 'package:fittrack/screens/today_page.dart';
 import 'package:fittrack/screens/trends.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,8 @@ class ShortAnimationPageRoute extends MaterialPageRoute {
   @override
   Duration get transitionDuration => const Duration(milliseconds: 100);
 
-  ShortAnimationPageRoute({builder, settings}) : super(builder: builder, settings: settings);
+  ShortAnimationPageRoute({builder, settings})
+      : super(builder: builder, settings: settings);
 }
 
 class AppRouter {
@@ -80,8 +81,8 @@ class AppRouter {
         appBarTitle = 'Past Workouts';
         break;
       case RouteName.import:
-        appBarTitle = 'Import Data';
-        builder = (BuildContext context) => const ImportPage();
+        appBarTitle = 'Import & Export';
+        builder = (BuildContext context) => const ImportExportPage();
         break;
       case RouteName.today:
         appBarTitle = 'Today\'s Workout';
@@ -97,6 +98,6 @@ class AppRouter {
             showAppBar: showAppBar,
             appBarTitle: appBarTitle,
             child: builder(context)),
-       settings: settings);
+        settings: settings);
   }
 }
