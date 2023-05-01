@@ -36,8 +36,6 @@ class AppDatabase extends _$AppDatabase {
   MigrationStrategy get migration {
     return MigrationStrategy(onCreate: (m) async {
       await m.createAll(); // create all tables
-      await Future.wait(defaultExercises
-          .map((e) => into(exercises).insert(e))); // insert on first run.
     }, beforeOpen: (openingDetails) async {
       if (kDebugMode /* or some other flag */) {
         final m = Migrator(this);
@@ -45,6 +43,11 @@ class AppDatabase extends _$AppDatabase {
           await m.deleteTable(table.actualTableName);
           await m.createTable(table);
         }
+        await Future.wait(defaultExercises.map((e) => into(exercises).insert(e,
+            mode: InsertMode.insertOrIgnore,
+            onConflict: DoUpdate(
+                (it) => ExercisesCompanion.custom(name: it.name),
+                target: [exercises.name])))); // insert on first run.
       }
     });
   }
