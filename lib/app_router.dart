@@ -81,7 +81,7 @@ class AppRouter {
         appBarTitle = 'Past Workouts';
         break;
       case RouteName.import:
-        appBarTitle = 'Import Data';
+        appBarTitle = 'Import & Export';
         builder = (BuildContext context) => const ImportExportPage();
         break;
       case RouteName.today:
